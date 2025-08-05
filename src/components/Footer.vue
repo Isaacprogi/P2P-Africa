@@ -109,7 +109,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import FooterColumn from "./FooterColumn.vue";
-import Logo from "@/assets/logo.svg";
+import Logo from "@/assets/Logo.svg";
 import Facebook from "@/assets/facebook-yellow.svg";
 import Linkedin from "@/assets/linkedin-yellow.svg";
 import Instagram from "@/assets/instagram-yellow.svg";
