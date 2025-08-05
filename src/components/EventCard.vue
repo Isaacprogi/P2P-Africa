@@ -1,20 +1,30 @@
-<!-- components/EventCard.vue -->
 <template>
-  <div :class="cardClasses">
-    <div class="flex items-start space-x-3 mb-4">
-      <component 
-        :is="iconComponent" 
-        :class="iconClasses"
-        :size="20" 
-      />
-      <div>
-        <h3 :class="titleClasses">{{ event.title }}</h3>
+  <div :class="[cardClasses, 'flex flex-col justify-between min-h-[220px]']">
+    <div>
+      <div class="flex items-start space-x-3 mb-4">
+        <template v-if="props.event.icon === 'calendar'">
+          <img
+            :src="props.event.theme === 'dark' ? CalendarDark : CalendarLight"
+            class="w-5 h-5 mt-1"
+            :alt="event.title"
+          />
+        </template>
+        <template v-else>
+          <MapPin class="w-5 h-5 mt-1 text-teal-700" />
+        </template>
+
+        <div>
+          <h3 :class="titleClasses">{{ event.title }}</h3>
+        </div>
       </div>
+
+      <p :class="descriptionClasses">
+        {{ event.description }}
+      </p>
     </div>
-    <p :class="descriptionClasses">
-      {{ event.description }}
-    </p>
-    <div class="flex space-x-4">
+
+    <!-- Buttons always at bottom -->
+    <div class="flex space-x-4 mt-6">
       <button :class="primaryButtonClasses">
         Book A Seat
       </button>
@@ -26,9 +36,12 @@
   </div>
 </template>
 
+
 <script setup lang="ts">
 import { computed } from 'vue'
 import { Calendar, MapPin, ArrowRight } from 'lucide-vue-next'
+import CalendarDark from '@/assets/calendar-dark.svg'
+import CalendarLight from '@/assets/calendar-light.svg'
 
 interface Event {
   id: number
@@ -44,9 +57,6 @@ interface Props {
 
 const props = defineProps<Props>()
 
-const iconComponent = computed(() => {
-  return props.event.icon === 'calendar' ? Calendar : MapPin
-})
 
 const cardClasses = computed(() => {
   return props.event.theme === 'dark' 
@@ -54,9 +64,6 @@ const cardClasses = computed(() => {
     : 'bg-white shadow-lg rounded-xl p-6'
 })
 
-const iconClasses = computed(() => {
-  return props.event.theme === 'dark' ? 'text-teal-300  mt-1' : 'text-teal-700 mt-1'
-})
 
 const titleClasses = computed(() => {
   return props.event.theme === 'dark' 
@@ -72,7 +79,7 @@ const descriptionClasses = computed(() => {
 
 const primaryButtonClasses = computed(() => {
   return props.event.theme === 'dark'
-    ? 'border border-white hover:bg-[#2E6258] cursor-pointer  rounded-lg text-white px-4 py-2 rounded text-sm  transition-colors'
+    ? 'border border-white hover:bg-[#1B3A36] cursor-pointer  rounded-lg text-white px-4 py-2 rounded text-sm  transition-colors'
     : 'border border-[#0D4036] text-[#0D4036] cursor-pointer px-4 py-2 rounded-lg text-sm hover:bg-gray-100 transition-colors'
 })
 
