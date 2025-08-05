@@ -1,4 +1,3 @@
-<!-- components/FooterColumn.vue -->
 <template>
   <div>
     <h4 class="font-bold mb-4">{{ title }}</h4>
