@@ -124,7 +124,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import Logo from "@/assets/logo.svg";
+import Logo from "@/assets/Logo.svg";
 import Facebook from "@/assets/facebook.svg";
 import Linkedin from "@/assets/linkedin.svg";
 import Instagram from "@/assets/instagram.svg";
