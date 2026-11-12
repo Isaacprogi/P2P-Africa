@@ -219,7 +219,7 @@ onBeforeUnmount(() => {
 /* Nav links: underline grows from the left on hover/focus. */
 .nav-link {
   position: relative;
-  padding-bottom: 2px;
+  padding-bottom: 4px;
   transition: color 0.2s ease;
 }
 .nav-link::after {
